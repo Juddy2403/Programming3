@@ -16,6 +16,8 @@
 #include <memory.h>
 #include <vector>			// using std::vector for tab control logic
 
+using namespace std;
+
 //-----------------------------------------------------------------
 // Static Variable Initialization
 //-----------------------------------------------------------------

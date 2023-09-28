@@ -32,7 +32,6 @@
 #include <vector>						// using std::vector for tab control logic
 #include <queue>						// using std::queue for event system
 #include <algorithm>
-using namespace std;
 
 //-----------------------------------------------------------------
 // Pragma Library includes
@@ -255,7 +254,7 @@ public:
 
 protected:
 	Caller() {}								// constructor only for derived classes
-	vector<Callable*> m_TargetList;
+	std::vector<Callable*> m_TargetList;
 
 	virtual bool CallListeners();			// placing the event code in a separate method instead of directly in the windows messaging
 											// function allows inheriting classes to override the event code. 
@@ -465,7 +464,7 @@ private:
 	void SwitchPlayingOff();		
 
 	// private mcisendstring command methods and command queue datamember
-	queue<tstring> m_CommandQueue;
+	std::queue<tstring> m_CommandQueue;
 	void QueuePlayCommand(int msecStart);
 	void QueuePlayCommand(int msecStart, int msecStop);
 	void QueuePauseCommand();
@@ -486,14 +485,14 @@ private:
 // Bitmap Class
 //-----------------------------------------------------------------
 
-class Bitmap
+class Bitmap final
 {
 public:
 	Bitmap(HBITMAP hBitmap);		
 	Bitmap(const tstring& nameRef, bool createAlphaChannel = true);						
 	Bitmap(int IDBitmap, const tstring& typeRef, bool createAlphaChannel = true);
 
-	virtual ~Bitmap();
+	~Bitmap();
 
 	// Disabling copy/move constructors and assignment operators   
 	Bitmap(const Bitmap& other) = delete;
@@ -536,7 +535,7 @@ private:
 //-----------------------------------------------------------------
 // TGA Loader Class - 16/11/04 Codehead - original name TGAImg
 //-----------------------------------------------------------------
-class TargaLoader
+class TargaLoader final
 {
 public:
 	TargaLoader();
@@ -566,7 +565,7 @@ private:
 //-----------------------------------------------------------------
 // HitRegion Class								
 //-----------------------------------------------------------------
-class HitRegion
+class HitRegion final
 {
 public: 
 	//---------------------------
@@ -577,7 +576,7 @@ public:
 	//---------------------------
 	// Destructor
 	//---------------------------
-	virtual ~HitRegion();	
+	~HitRegion();	
 
 	//---------------------------
 	// Disabling copy/move constructors and assignment operators   
@@ -591,9 +590,7 @@ public:
 	// General Methods
 	//---------------------------
 	bool Create(int type, int x, int y, int width, int height);	// Use this create to form a rectangular or elliptic hitregion
-
 	bool Create(int type, const POINT* pointsArr, int numberOfPoints);	// Use this create to form a polygonal hitregion
-	
 	bool Create(int type, const Bitmap* bmpPtr, COLORREF cTransparent = RGB(255, 0, 255), COLORREF cTolerance = 0); // Use this create to create a hitregion from a bitmap
 
 	HitRegion* Clone() const;						// Makes a new HitRegion object with the same data as this hitregion object, and returns a pointer value to it
@@ -630,7 +627,7 @@ private:
 //-----------------------------------------------------------------
 // Font Class
 //-----------------------------------------------------------------
-class Font
+class Font final
 {
 public:
 	Font(const tstring& fontNameRef, bool bold, bool italic, bool underline, int size);

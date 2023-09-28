@@ -53,6 +53,16 @@ void X::End()
 	// Insert the code that needs to be executed at the closing of the game
 }
 
+void X::Paint(RECT rect)
+{
+	// Insert paint code 
+}
+
+void X::Tick()
+{
+	// Insert non-paint code that needs to be executed each tick 
+}
+
 void X::MouseButtonAction(bool isLeft, bool isDown, int x, int y, WPARAM wParam)
 {	
 	// Insert the code that needs to be executed when the game registers a mouse button action
@@ -132,16 +142,6 @@ void X::KeyPressed(TCHAR cKey)
 		GAME_ENGINE->MessageBox(_T("Escape menu."));
 	}
 	*/
-}
-
-void X::Paint(RECT rect)
-{
-	// Insert paint code 
-}
-
-void X::Tick()
-{
-	// Insert non-paint code that needs to be executed each tick 
 }
 
 void X::CallAction(Caller* callerPtr)

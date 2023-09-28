@@ -40,13 +40,13 @@ public:
 	void Initialize(HINSTANCE hInstance) override;
 	void Start() override;
 	void End() override;
+	void Paint(RECT rect) override;
+	void Tick() override;
 	void MouseButtonAction(bool isLeft, bool isDown, int x, int y, WPARAM wParam) override;
 	void MouseWheelAction(int x, int y, int distance, WPARAM wParam) override;
 	void MouseMove(int x, int y, WPARAM wParam) override;
 	void CheckKeyboard() override;
 	void KeyPressed(TCHAR cKey) override;
-	void Paint(RECT rect) override;
-	void Tick() override;
 	
 	void CallAction(Caller* callerPtr) override;
 
